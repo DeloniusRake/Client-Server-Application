@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title th:text="*{product.productName}"></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="content">
+        <header class="header-section">
+            <ul class="menu-list">
+                <li><a href="index"><img class="logo" src="img/logo.jpg" alt="лого"/></a></li>
+                <li><a href="index" class="menu-link">Главная</a></li>
+                <li><a href="catalog" class="menu-link">Продукция</a></li>
+            </ul>
+        </header>
+        <div class="container">
+            <div class="main-info">
+                <h1 class="hello-h1 product" th:text="*{product.productName}"></h1>
+            </div>
+            <div class="img-link">
+                <a th:href="*{product.img}" target="_blank"><img class="product-img" th:src="*{product.img}"
+                                                                 th:alt="*{product.productName}"></a>
+            </div>
+            <div class="description">
+                <h2 class="h2-descr">Цена</h2>
+                <p class="product-figure" style="font-size: larger;" th:text="${product.price} + ' ₽'"></p>
+                <h2 class="h2-descr">Описание</h2>
+                <p th:text="*{product.description}"></p>
+                <h2 class="h2-descr">Характеристики</h2>
+            </div>
+            <div>
+                <dl class="dlist">
+                    <dt class="dtelem">
+                        <span class="dtspan">Тип</span>
+                    </dt>
+                    <a th:href="@{/catalog(categoryID = ${category.categoryID})}">
+                        <dd class="ddelem" th:text="${category.categoryName}"></dd>
+                    </a>
+                    <dt class="dtelem">
+                        <span class="dtspan">Производитель</span>
+                    </dt>
+                    <a th:href="@{/catalog(manufacturerID = ${manufacturer.manufacturerID})}">
+                        <dd class="ddelem" th:text="${manufacturer.manufacturerName}"></dd>
+                    </a>
+                    <dt class="dtelem">
+                        <span class="dtspan">Вес товара, г</span>
+                    </dt>
+                    <dd class="ddelem" th:text="${product.weight}"></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-style">
+        <p class="fotter-text"> &copy; Все права защищены 2022</p>
+    </footer>
+</div>
+
+<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/bootstrap.bundle.js"></script>
+</body>
+</html>
